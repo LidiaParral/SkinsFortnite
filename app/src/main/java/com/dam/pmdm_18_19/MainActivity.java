@@ -47,24 +47,11 @@ public class MainActivity extends AppCompatActivity {
         //2.Referenciar las variables con las IDs de los atributos
         rv = findViewById(R.id.rvCatalogoSkins);
         llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rv.setLayoutManager(llm);
 
         etRareza = findViewById(R.id.etRareza);
 
-        adapter = new SkinsAdapter(listaSkins);
-
-
-        adapter.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = rv.getChildAdapterPosition(v);
-
-                Intent intentDatos = new Intent(getApplicationContext(),DatosSkinActivity.class);
-                startActivity(intentDatos);
-
-            }
-        });
-
-        rv.setAdapter(adapter);
 
     }
 
@@ -101,6 +88,22 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<ArrayList<Skin>> call, Response<ArrayList<Skin>> response) {
                     if(response.isSuccessful()){
                         ArrayList<Skin> listaSkins = response.body();
+
+
+                        adapter = new SkinsAdapter(listaSkins);
+
+                        adapter.setListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int i = rv.getChildAdapterPosition(v);
+
+                                Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
+                                startActivity(intentDatos);
+                                rv.setAdapter(adapter);
+                            }
+                        });
+
+
 
                         cargarRecycler(listaSkins);
                     } else {
@@ -140,6 +143,22 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<ArrayList<Skin>> call, Response<ArrayList<Skin>> response) {
                     if(response.isSuccessful()){
                         ArrayList<Skin> listaSkins = response.body();
+
+                        adapter = new SkinsAdapter(listaSkins);
+
+
+                        adapter.setListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int i = rv.getChildAdapterPosition(v);
+
+                                Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
+                                startActivity(intentDatos);
+
+                            }
+                        });
+
+                        rv.setAdapter(adapter);
 
                         cargarRecycler(listaSkins);
                     } else {

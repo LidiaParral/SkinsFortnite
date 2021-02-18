@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ExamenPMDM_18_19</string>
+    <string name="et_rareza">Indique la rareza a consultar</string>
+    <string name="btn_consulta">Consultar skins</string>
+    <string name="tv_nombre">%1$s :</string>
+    <string name="tv_rareza">%1$s :</string>
+    <string name="tv_nombre_datos">%1$s</string>
+    <string name="tv_descrip_datos">%1$s</string>
+    <string name="tv_rareza_datos">%1$s</string>
+    <string name="tv_coste_datos">%1$s</string>
+    <string name="tv_media">%1$d puntos</string>
+    <string name="tv_total_puntos">%1$d puntos</string>
+    <string name="tv_calidad_votos">"%1$s "</string>
+    <string name="no_network">En este momento no se puede realizar la petición</string>
+</resources>

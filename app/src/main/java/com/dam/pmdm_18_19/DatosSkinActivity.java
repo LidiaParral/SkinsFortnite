@@ -1,6 +1,7 @@
 package com.dam.pmdm_18_19;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import com.dam.pmdm_18_19.model.Ratings;
 import com.dam.pmdm_18_19.model.SkinsDetalle;
 
-import java.util.ArrayList;
 
 public class DatosSkinActivity extends AppCompatActivity {
 
@@ -47,11 +47,15 @@ public class DatosSkinActivity extends AppCompatActivity {
         tvRarezaD.setText(skin.getRarity());
         tvCosteD.setText(skin.getCost());
 
-        //tvMediaP.setText(ratings.getAvgStars());
+        tvMediaP.getText(ratings.getAvgStars());
         tvTotalP.setText(ratings.getTotalPoints());
         tvCalidad.setText(ratings.getNumberVotes());
 
-        imSkin.setImageDrawable(Drawable.createFromPath(skin.getImage()));
+        String uri = "@drawable/nombre_imagen";
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
+        imSkin.setImageDrawable(imagen);
+
     }
 
 

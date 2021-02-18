@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     //
     SkinsAdapter adapter;
-    final ArrayList<Skin> listaSkins = new ArrayList<Skin>();
+    ArrayList<Skin> listaSkins = new ArrayList<Skin>();
 
 
     @Override
@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
         rv = findViewById(R.id.rvCatalogoSkins);
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        rv.setHasFixedSize(true);
         rv.setLayoutManager(llm);
+        rv.setAdapter(adapter);
 
         etRareza = findViewById(R.id.etRareza);
 
@@ -95,17 +98,19 @@ public class MainActivity extends AppCompatActivity {
                         adapter.setListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                int i = rv.getChildAdapterPosition(v);
+                                //int i = rv.getChildAdapterPosition(v);
 
-                                Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
-                                startActivity(intentDatos);
-                                rv.setAdapter(adapter);
+                                Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+                               /*Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
+                                startActivity(intentDatos);*/
+
                             }
                         });
 
+                        rv.setAdapter(adapter);
 
 
-                        cargarRecycler(listaSkins);
+                        //cargarRecycler(listaSkins);
                     } else {
                         Log.i("RespuestaWS", "Error - " + response.code());
                     }
@@ -150,17 +155,18 @@ public class MainActivity extends AppCompatActivity {
                         adapter.setListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                int i = rv.getChildAdapterPosition(v);
+                                //int i = rv.getChildAdapterPosition(v);
 
-                                Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
-                                startActivity(intentDatos);
+                                Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+                                /*Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
+                                startActivity(intentDatos);*/
 
                             }
                         });
 
                         rv.setAdapter(adapter);
 
-                        cargarRecycler(listaSkins);
+                        //cargarRecycler(listaSkins);
                     } else {
                         Log.i("RespuestaWS", "Error - " + response.code());
                     }

@@ -12,4 +12,5 @@
     <string name="tv_total_puntos">%1$d puntos</string>
     <string name="tv_calidad_votos">"%1$s "</string>
     <string name="no_network">En este momento no se puede realizar la petición</string>
+    <string name="error">Error</string>
 </resources>

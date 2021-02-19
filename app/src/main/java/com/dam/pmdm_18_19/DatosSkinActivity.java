@@ -5,11 +5,15 @@ import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dam.pmdm_18_19.model.Ratings;
+import com.dam.pmdm_18_19.model.Skin;
 import com.dam.pmdm_18_19.model.SkinsDetalle;
+
+import java.util.ArrayList;
 
 
 public class DatosSkinActivity extends AppCompatActivity {
@@ -24,8 +28,7 @@ public class DatosSkinActivity extends AppCompatActivity {
 
     ImageView imSkin;
 
-    SkinsDetalle skin;
-    Ratings ratings;
+    String nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +45,12 @@ public class DatosSkinActivity extends AppCompatActivity {
 
         imSkin = findViewById(R.id.imgSkin);
 
-        tvNombreD.setText(skin.getName());
-        tvDescD.setText(skin.getDescription());
-        tvRarezaD.setText(skin.getRarity());
-        tvCosteD.setText(skin.getCost());
-
-        tvMediaP.getText(ratings.getAvgStars());
-        tvTotalP.setText(ratings.getTotalPoints());
-        tvCalidad.setText(ratings.getNumberVotes());
-
-        String uri = "@drawable/nombre_imagen";
+        /*String uri = "@drawable/nombre_imagen";
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
         Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-        imSkin.setImageDrawable(imagen);
+        imSkin.setImageDrawable(imagen);*/
+
+
 
     }
 

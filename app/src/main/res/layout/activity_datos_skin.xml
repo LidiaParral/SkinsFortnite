@@ -19,6 +19,7 @@
         android:id="@+id/tvDescripD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
         android:layout_below="@id/tvNombreD"
         android:textSize="24sp"
         android:text="@string/tv_descrip_datos"/>
@@ -26,6 +27,7 @@
         android:id="@+id/tvRarezaD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
         android:layout_below="@id/tvDescripD"
         android:textSize="24sp"
         android:text="@string/tv_rareza_datos"/>
@@ -33,6 +35,7 @@
         android:id="@+id/tvCosteD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
         android:layout_below="@id/tvRarezaD"
         android:textSize="24sp"
         android:text="@string/tv_coste_datos"/>

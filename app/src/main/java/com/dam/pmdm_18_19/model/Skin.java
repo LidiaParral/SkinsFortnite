@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Skin implements Parcelable {
+public class Skin {
 
 
     @SerializedName("identifier")
@@ -18,6 +18,7 @@ public class Skin implements Parcelable {
     @SerializedName("rarity")
     @Expose
     private String rarity;
+
 
     public String getIdentifier() {
         return identifier;
@@ -43,13 +44,5 @@ public class Skin implements Parcelable {
         this.rarity = rarity;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

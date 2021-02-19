@@ -14,9 +14,11 @@
         android:roundIcon="@mipmap/ifortnite_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:largeHeap="true"
         android:theme="@style/Theme.ExamenPMDM_18_19">
-        <activity android:name="com.dam.pmdm_18_19.DatosSkinActivity"></activity>
-        <activity android:name="com.dam.pmdm_18_19.MainActivity">
+        <activity android:name=".DatosSkinActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

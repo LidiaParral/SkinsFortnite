@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.pmdm_18_19.model.Skin;
+import com.dam.pmdm_18_19.model.SkinsDetalle;
 import com.dam.pmdm_18_19.recycleUtils.SkinsAdapter;
 import com.dam.pmdm_18_19.retrofitUtils.APIRestSkinsFortnite;
 import com.dam.pmdm_18_19.retrofitUtils.RetrofitSkinsClient;
@@ -27,6 +30,7 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String CLAVE_DATOS = "DATOS";
     //1.Crear los variables
     RecyclerView rv;
     SkinsAdapter sAdapter;
@@ -36,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     //
     SkinsAdapter adapter;
-    ArrayList<Skin> listaSkins = new ArrayList<Skin>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,9 @@ public class MainActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(llm);
-        rv.setAdapter(adapter);
 
         etRareza = findViewById(R.id.etRareza);
+
 
 
     }
@@ -92,25 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     if(response.isSuccessful()){
                         ArrayList<Skin> listaSkins = response.body();
 
-
-                        adapter = new SkinsAdapter(listaSkins);
-
-                        adapter.setListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //int i = rv.getChildAdapterPosition(v);
-
-                                Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-                               /*Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
-                                startActivity(intentDatos);*/
-
-                            }
-                        });
-
-                        rv.setAdapter(adapter);
-
-
-                        //cargarRecycler(listaSkins);
+                        cargarRecycler(listaSkins);
                     } else {
                         Log.i("RespuestaWS", "Error - " + response.code());
                     }
@@ -149,24 +131,7 @@ public class MainActivity extends AppCompatActivity {
                     if(response.isSuccessful()){
                         ArrayList<Skin> listaSkins = response.body();
 
-                        adapter = new SkinsAdapter(listaSkins);
-
-
-                        adapter.setListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //int i = rv.getChildAdapterPosition(v);
-
-                                Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-                                /*Intent intentDatos = new Intent(MainActivity.this, DatosSkinActivity.class);
-                                startActivity(intentDatos);*/
-
-                            }
-                        });
-
-                        rv.setAdapter(adapter);
-
-                        //cargarRecycler(listaSkins);
+                        cargarRecycler(listaSkins);
                     } else {
                         Log.i("RespuestaWS", "Error - " + response.code());
                     }
@@ -191,7 +156,26 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
+        ArrayList<Skin> skin = new ArrayList<Skin>();
+
+
         sAdapter = new SkinsAdapter(listaSkins);
+        sAdapter.setListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: ARRANCAR SIGUIENTE ACTIVITY PASÁNDOLE EL ID DE LA SKIN
+                int i = rv.indexOfChild(v);
+                String rareza = "";
+
+                if(!etRareza.getText().toString().equals("")) {
+                    Intent intentDatos = new Intent(getApplicationContext(), DatosSkinActivity.class);
+                    intentDatos.putExtra(rareza, etRareza.getText().toString());
+                    startActivity(intentDatos);
+                } else {
+                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         rv.setAdapter(sAdapter);
     }
 

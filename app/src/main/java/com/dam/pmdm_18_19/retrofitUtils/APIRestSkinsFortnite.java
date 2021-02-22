@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIRestSkinsFortnite {
@@ -23,6 +24,6 @@ public interface APIRestSkinsFortnite {
 
     //Añadir método que busque personajes por la id pasada
     @GET("skinDetalles/{id}")
-    Call<SkinsDetalle> obtenerID(@Query("id") String pid);
+    Call<SkinsDetalle> obtenerID(@Path("id") String pid);
 
 }

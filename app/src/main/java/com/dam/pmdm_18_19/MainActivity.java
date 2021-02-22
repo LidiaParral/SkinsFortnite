@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         etRareza = findViewById(R.id.etRareza);
 
-
+        id = getIntent().getStringExtra(MainActivity.CLAVE_DATOS);
 
         tvNombreD = findViewById(R.id.tvNombreD);
         tvDescD = findViewById(R.id.tvDescripD);

@@ -35,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager llm;
     EditText etRareza;
 
-    //
-    SkinsAdapter adapter;
-
-
-
     String id;
 
     @Override
@@ -62,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     public void consultar(View view) {
         //10.
         String rareza = etRareza.getText().toString();
-
 
         //11.
         if(rareza.isEmpty()){

@@ -26,7 +26,7 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.SkinVH> impl
         this.datosSkin = datosSkin;
     }
 
-    //3.Añadir los método que requieren mplementación por extender de Adapter
+    //3.Añadir los método que requieren implementación por extender de Adapter
     @NonNull
     @Override
     public SkinVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,6 +51,7 @@ public class SkinsAdapter extends RecyclerView.Adapter<SkinsAdapter.SkinVH> impl
         return datosSkin.size();
     }
 
+    //
     @Override
     public void onClick(View v) {
         if (listener != null){

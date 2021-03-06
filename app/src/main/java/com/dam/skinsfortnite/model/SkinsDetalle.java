@@ -1,4 +1,4 @@
-package com.dam.pmdm_18_19.model;
+package com.dam.skinsfortnite.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

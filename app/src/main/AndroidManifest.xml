@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.dam.pmdm_18_19">
+    package="com.dam.skinsfortnite">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <!--android:usesCleartextTraffic="true" - -->
     <application
@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:largeHeap="true"
-        android:theme="@style/Theme.ExamenPMDM_18_19">
-        <activity android:name=".DatosSkinActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Skinsfortnite">
+        <activity android:name="com.dam.skinsfortnite.DatosSkinActivity"
+            android:parentActivityName="com.dam.skinsfortnite.MainActivity"></activity>
+        <activity android:name="com.dam.skinsfortnite.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

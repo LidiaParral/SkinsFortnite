@@ -1,28 +1,22 @@
-package com.dam.pmdm_18_19;
+package com.dam.skinsfortnite;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dam.pmdm_18_19.model.Skin;
-import com.dam.pmdm_18_19.model.SkinsDetalle;
-import com.dam.pmdm_18_19.recycleUtils.SkinsAdapter;
-import com.dam.pmdm_18_19.retrofitUtils.APIRestSkinsFortnite;
-import com.dam.pmdm_18_19.retrofitUtils.RetrofitSkinsClient;
+import com.dam.skinsfortnite.model.Skin;
+import com.dam.skinsfortnite.recycleUtils.SkinsAdapter;
+import com.dam.skinsfortnite.retrofitUtils.APIRestSkinsFortnite;
+import com.dam.skinsfortnite.retrofitUtils.RetrofitSkinsClient;
 
 import java.util.ArrayList;
 
@@ -33,7 +27,7 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String CLAVE_DATOS = "DATOS";
+    static final String CLAVE_DATOS = "id";
     //1.Crear los variables
     RecyclerView rv;
     SkinsAdapter sAdapter;
@@ -44,15 +38,7 @@ public class MainActivity extends AppCompatActivity {
     //
     SkinsAdapter adapter;
 
-    //
-    TextView tvNombreD;
-    TextView tvDescD;
-    TextView tvRarezaD;
-    TextView tvCosteD;
-    TextView tvMediaP;
-    TextView tvTotalP;
-    TextView tvCalidad;
-    ImageView imSkin;
+
 
     String id;
 
@@ -69,19 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         etRareza = findViewById(R.id.etRareza);
 
-        id = getIntent().getStringExtra(MainActivity.CLAVE_DATOS);
-
-        tvNombreD = findViewById(R.id.tvNombreD);
-        tvDescD = findViewById(R.id.tvDescripD);
-        tvRarezaD = findViewById(R.id.tvRarezaD);
-        tvCosteD = findViewById(R.id.tvCosteD);
-        tvMediaP = findViewById(R.id.tvMediaP);
-        tvTotalP = findViewById(R.id.tvTotalPuntos);
-        tvCalidad = findViewById(R.id.tvCalidadVotos);
-
-        imSkin = findViewById(R.id.imgSkin);
-
-
 
     }
 
@@ -93,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         //11.
         if(rareza.isEmpty()){
-            invocarWSSinRareza(id);
+            invocarWSSinRareza();
         } else {
             invocarWSConRareza(rareza);
         }
@@ -140,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void invocarWSSinRareza(String id) {
+    private void invocarWSSinRareza() {
         if(isNetworkAvailable()){
             //5.Crear un cliente RETROFIT
             Retrofit r = RetrofitSkinsClient.getClient(APIRestSkinsFortnite.BASE_URL);
@@ -148,25 +121,24 @@ public class MainActivity extends AppCompatActivity {
             APIRestSkinsFortnite asf = r.create(APIRestSkinsFortnite.class);
 
             //7.Una variable que retorne el valor de invocar al método de obtenerSkin;
-            Call<SkinsDetalle> call = asf.obtenerID(id);
+            Call<ArrayList<Skin>> call = asf.obtenerSkin();
 
             //8.
-            call.enqueue(new Callback<SkinsDetalle>() {
+            call.enqueue(new Callback<ArrayList<Skin>>() {
 
 
                 @Override
-                public void onResponse(Call<SkinsDetalle> call, Response<SkinsDetalle> response) {
+                public void onResponse(Call<ArrayList<Skin>> call, Response<ArrayList<Skin>> response) {
+                    ArrayList<Skin> listaSkins = response.body();
 
-                    SkinsDetalle skinsDetalle = response.body();
-
-                    cargarDatos(skinsDetalle);
-
+                    cargarRecycler(listaSkins);
                 }
 
                 @Override
-                public void onFailure(Call<SkinsDetalle> call, Throwable t) {
+                public void onFailure(Call<ArrayList<Skin>> call, Throwable t) {
                     Log.i("onFailure:", "Error - " + t.getMessage());
                     System.out.println(t.getMessage());
+
                 }
             });
             } else {
@@ -174,26 +146,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void cargarDatos(SkinsDetalle skinsDetalle) {
-        tvNombreD.setText(skinsDetalle.getName());
-        tvDescD.setText(skinsDetalle.getDescription());
-        tvCosteD.setText(skinsDetalle.getCost());
-        tvRarezaD.setText(skinsDetalle.getRarity());
-
-        String media = String.valueOf(skinsDetalle.getRatings().getAvgStars());
-        tvMediaP.setText(media);
-        String total = String.valueOf(skinsDetalle.getRatings().getTotalPoints());
-        tvTotalP.setText(total);
-        String cal = String.valueOf(skinsDetalle.getRatings().getNumberVotes());
-        tvCalidad.setText(cal);
-
-        String uri = "@drawable/nombre_imagen";
-        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-        Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-        imSkin.setImageDrawable(imagen);
-
-
-    }
 
     //9.
     private void cargarRecycler(ArrayList<Skin> listaSkins) {
@@ -207,18 +159,16 @@ public class MainActivity extends AppCompatActivity {
         sAdapter.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: ARRANCAR SIGUIENTE ACTIVITY PASÁNDOLE EL ID DE LA SKIN
-                int i = rv.indexOfChild(v);
-                //Acceder
-                String id = listaSkins.get(i).getIdentifier();
+                //ARRANCAR SIGUIENTE ACTIVITY PASÁNDOLE EL ID DE LA SKIN
+                //Para poder acceder a todas las posiciones que están dentro del Scroll.
+                //getChildAdapterPosition:
+                Skin skinSeleccionado = listaSkins.get(rv.getChildAdapterPosition(v));
 
-                if(!etRareza.getText().toString().equals("")) {
-                    Intent intentDatos = new Intent(getApplicationContext(), DatosSkinActivity.class);
-                    intentDatos.putExtra(CLAVE_DATOS,id);
-                    startActivity(intentDatos);
-                } else {
-                    Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-                }
+                Intent i = new Intent(MainActivity.this, DatosSkinActivity.class);
+
+                i.putExtra(CLAVE_DATOS,skinSeleccionado.getIdentifier());
+
+                startActivity(i);
             }
         });
         rv.setAdapter(sAdapter);

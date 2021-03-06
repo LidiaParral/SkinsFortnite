@@ -44,7 +44,7 @@
         android:id="@+id/llPuntuacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:layout_below="@id/tvCosteD"
         android:orientation="horizontal">
 
@@ -54,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="18sp"
+            android:textColor="@color/white"
             android:text="@string/tv_media"/>
         <TextView
             android:id="@+id/tvTotalPuntos"
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="18sp"
+            android:textColor="@color/white"
             android:text="@string/tv_total_puntos"/>
         <TextView
             android:id="@+id/tvCalidadVotos"
@@ -68,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="18sp"
+            android:textColor="@color/white"
             android:text="@string/tv_calidad_votos"/>
 
 
@@ -78,7 +81,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_below="@id/llPuntuacion"
+        android:layout_marginBottom="48dp"
         android:layout_centerInParent="true"
-        android:layout_marginTop="71dp" />
+        android:layout_marginTop="71dp"/>
 
 </RelativeLayout>

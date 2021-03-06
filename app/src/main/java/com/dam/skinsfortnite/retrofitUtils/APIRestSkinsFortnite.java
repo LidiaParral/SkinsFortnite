@@ -1,7 +1,7 @@
-package com.dam.pmdm_18_19.retrofitUtils;
+package com.dam.skinsfortnite.retrofitUtils;
 
-import com.dam.pmdm_18_19.model.Skin;
-import com.dam.pmdm_18_19.model.SkinsDetalle;
+import com.dam.skinsfortnite.model.Skin;
+import com.dam.skinsfortnite.model.SkinsDetalle;
 
 import java.util.ArrayList;
 
@@ -11,19 +11,19 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIRestSkinsFortnite {
-    //8.
+    //1.
     public static final String BASE_URL = "http://10.0.2.2:3000/";
 
-    //9.
+    //2.
     @GET("skins/")
     Call<ArrayList<Skin>> obtenerSkin();
 
-    //Añadir método que busque por la rareza del personaje
+    //3.Añadir método que busque por la rareza del personaje
     @GET("skins/")
     Call<ArrayList<Skin>> obtenerSkin(@Query("rarity") String pRarity);
 
-    //Añadir método que busque personajes por la id pasada
-    @GET("skinDetalles/{id}")
-    Call<SkinsDetalle> obtenerID(@Path("id") String pid);
+    //4.Añadir método que busque personajes por la id pasada
+    @GET("skinsDetalles/{id_skin}")
+    Call<SkinsDetalle> obtenerID(@Path("id_skin") String id);
 
 }

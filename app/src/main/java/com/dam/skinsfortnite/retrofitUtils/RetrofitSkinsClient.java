@@ -1,4 +1,4 @@
-package com.dam.pmdm_18_19.retrofitUtils;
+package com.dam.skinsfortnite.retrofitUtils;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

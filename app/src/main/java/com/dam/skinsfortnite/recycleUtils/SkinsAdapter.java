@@ -1,4 +1,4 @@
-package com.dam.pmdm_18_19.recycleUtils;
+package com.dam.skinsfortnite.recycleUtils;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dam.pmdm_18_19.model.Skin;
-import com.dam.pmdm_18_19.R;
+import com.dam.skinsfortnite.model.Skin;
+import com.dam.skinsfortnite.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.dam.pmdm_18_19;
+package com.dam.skinsfortnite;
 
 import org.junit.Test;
 

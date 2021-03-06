@@ -1,4 +1,4 @@
-package com.dam.pmdm_18_19.model;
+package com.dam.skinsfortnite.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

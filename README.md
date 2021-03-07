@@ -15,8 +15,7 @@
  
  Skin | Details
  ---- | -------
-![Skin](https://user-images.githubusercontent.com/72860314/110259324-5e1a9b00-7fa7-11eb-928f-6ea74d1ca72b.gif)
- | ![](img/DetailsSkin.png)
+![Skin](https://user-images.githubusercontent.com/72860314/110259324-5e1a9b00-7fa7-11eb-928f-6ea74d1ca72b.gif) | ![](img/DetailsSkin.png)
 
 
  

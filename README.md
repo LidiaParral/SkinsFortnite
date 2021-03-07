@@ -4,14 +4,19 @@
  
  Main | AllSkins 
  ---- | --------
- ![](img/Main.png) | https://user-images.githubusercontent.com/72860314/110259180-b0a78780-7fa6-11eb-8083-72b44fb9cca7.mp4
+ ![](img/Main.png) | ![]
+https://user-images.githubusercontent.com/72860314/110259226-d3d23700-7fa6-11eb-8281-ff5dc741dc6e.mp4
+
+
 
 
  
  
  Skin | Details
  ---- | -------
- 
+ https://user-images.githubusercontent.com/72860314/110259229-d765be00-7fa6-11eb-8b93-1baffff68315.mp4 | ![](img/DetailsSkin.png)
+
+
  
  
  
